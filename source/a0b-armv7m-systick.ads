@@ -13,7 +13,9 @@ pragma Restrictions (No_Elaboration_Code);
 with A0B.Time;
 with A0B.Types;
 
-package A0B.ARMv7M.SysTick is
+package A0B.ARMv7M.SysTick
+  with Preelaborate
+is
 
    use type A0B.Types.Unsigned_32;
 
