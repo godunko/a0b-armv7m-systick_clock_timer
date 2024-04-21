@@ -6,6 +6,6 @@
 
 limited with "a0b_armv7m_systick_clock_timer";
 
-abstract project A0B_Time_Platform is
+abstract project A0B_Timer_Platform is
 
-end A0B_Time_Platform;
+end A0B_Timer_Platform;

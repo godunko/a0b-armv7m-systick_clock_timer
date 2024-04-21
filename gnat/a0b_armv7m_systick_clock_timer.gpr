@@ -7,11 +7,12 @@
 with "a0b_common";
 
 with "a0b_armv7m";
-with "a0b_time";
+limited with "a0b_time";
+limited with "a0b_timer";
 
 project A0B_ARMv7M_SysTick_Clock_Timer is
 
-   for Source_Dirs use ("../source");
+   for Source_Dirs use ("../source", "../source/clock", "../source/timer");
    for Object_Dir use "../.objs/" & A0B_Common.Object_Dir_Suffix;
 
    package Compiler is
