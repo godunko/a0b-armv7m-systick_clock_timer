@@ -10,6 +10,7 @@ pragma Ada_2022;
 
 with A0B.ARMv7M.CMSIS;        use A0B.ARMv7M.CMSIS;
 with A0B.ARMv7M.System_Timer; use A0B.ARMv7M.System_Timer;
+with A0B.Timer.Internals;
 
 package body A0B.ARMv7M.SysTick is
 
@@ -92,6 +93,8 @@ package body A0B.ARMv7M.SysTick is
       Microsecond_Ticks := Millisecond_Ticks / 1_000;
       Reload_Value      := Millisecond_Ticks - 1;
 
+      A0B.Timer.Internals.Initialize;
+
       SYST.RVR.RELOAD  := A0B.Types.Unsigned_24 (Reload_Value);
       SYST.CVR.CURRENT := 0;  --  Any write operation resets value to zero.
       SYST.CSR :=
@@ -123,10 +126,7 @@ package body A0B.ARMv7M.SysTick is
 
       Enable_Interrupts;
 
-      --  Scheduler.System_Timer_Tick (System_Timer.Tick_Base);
-
-      --  Request_PendSV;
-      --  --  Request PendSV exception to switch context
+      A0B.Timer.Internals.On_Tick;
    end SysTick_Handler;
 
 end A0B.ARMv7M.SysTick;
