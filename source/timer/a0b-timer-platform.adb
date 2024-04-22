@@ -10,17 +10,19 @@ with A0B.ARMv7M.System_Control_Block; use A0B.ARMv7M.System_Control_Block;
 separate (A0B.Timer)
 package body Platform is
 
-   ------------------------
-   -- Disable_Interrupts --
-   ------------------------
+   ----------------------------
+   -- Enter_Critical_Section --
+   ----------------------------
 
-   procedure Disable_Interrupts renames A0B.ARMv7M.CMSIS.Disable_Interrupts;
+   procedure Enter_Critical_Section
+     renames A0B.ARMv7M.CMSIS.Disable_Interrupts;
 
-   -----------------------
-   -- Enable_Interrupts --
-   -----------------------
+   ----------------------------
+   -- Leave_Critical_Section --
+   ----------------------------
 
-   procedure Enable_Interrupts renames A0B.ARMv7M.CMSIS.Enable_Interrupts;
+   procedure Leave_Critical_Section
+     renames A0B.ARMv7M.CMSIS.Enable_Interrupts;
 
    ------------------
    -- Request_Tick --
