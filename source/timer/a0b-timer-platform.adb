@@ -42,7 +42,11 @@ package body Platform is
 
    procedure Set_Next
      (Span    : A0B.Time.Time_Span;
-      Success : out Boolean) is
+      Success : out Boolean)
+   is
+      pragma Unreferenced (Span);
+      --  SysTick timer has a fixed tick duration.
+
    begin
       Success := True;
    end Set_Next;
