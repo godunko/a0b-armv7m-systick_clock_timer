@@ -6,7 +6,7 @@ authors = ["Vadim Godunko"]
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
 maintainers-logins = ["godunko"]
 licenses = "Apache-2.0 WITH LLVM-exception"
-tags = ["embedded", "time", "clock"]
+tags = ["embedded", "time", "timer"]
 
 project-files = ["gnat/a0b_time_platform.gpr", "gnat/a0b_timer_platform.gpr"]
 
