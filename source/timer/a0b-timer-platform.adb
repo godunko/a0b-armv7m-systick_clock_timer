@@ -5,7 +5,6 @@
 --
 
 with A0B.ARMv7M.Instructions;
-with A0B.ARMv7M.SCS.SCB;
 
 separate (A0B.Timer)
 package body Platform is
@@ -30,12 +29,11 @@ package body Platform is
 
    procedure Request_Tick is
    begin
-      --  Request SysTick exception. Do synchronization after modification of
-      --  the register in the System Control Space to avoid side effects.
+      --  Handling of the tick updates current base of the real time clock.
+      --  So, nothing to do here; all handling will be done a bit later on
+      --  next tick of the timer.
 
-      A0B.ARMv7M.SCS.SCB.ICSR := (PENDSVSET => True, others => <>);
-      A0B.ARMv7M.Instructions.Data_Synchronization_Barrier;
-      A0B.ARMv7M.Instructions.Instruction_Synchronization_Barrier;
+      null;
    end Request_Tick;
 
    --------------
