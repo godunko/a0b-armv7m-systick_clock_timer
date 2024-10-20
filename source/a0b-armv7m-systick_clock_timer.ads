@@ -13,7 +13,7 @@ pragma Restrictions (No_Elaboration_Code);
 with A0B.Time;
 with A0B.Types;
 
-package A0B.ARMv7M.SysTick
+package A0B.ARMv7M.SysTick_Clock_Timer
   with Preelaborate
 is
 
@@ -30,4 +30,4 @@ is
    function Clock return A0B.Time.Monotonic_Time;
    --  Return current monotonic time
 
-end A0B.ARMv7M.SysTick;
+end A0B.ARMv7M.SysTick_Clock_Timer;

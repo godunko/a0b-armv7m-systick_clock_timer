@@ -6,9 +6,9 @@
 
 pragma Restrictions (No_Elaboration_Code);
 
-with A0B.ARMv7M.SysTick;
+with A0B.ARMv7M.SysTick_Clock_Timer;
 
 function A0B.Time.Clock return A0B.Time.Monotonic_Time is
 begin
-   return A0B.ARMv7M.SysTick.Clock;
+   return A0B.ARMv7M.SysTick_Clock_Timer.Clock;
 end A0B.Time.Clock;

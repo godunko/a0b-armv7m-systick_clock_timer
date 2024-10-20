@@ -12,7 +12,7 @@ with A0B.ARMv7M.CMSIS;        use A0B.ARMv7M.CMSIS;
 with A0B.ARMv7M.System_Timer; use A0B.ARMv7M.System_Timer;
 with A0B.Timer.Internals;
 
-package body A0B.ARMv7M.SysTick is
+package body A0B.ARMv7M.SysTick_Clock_Timer is
 
    procedure SysTick_Handler
      with Export, Convention => C, External_Name => "SysTick_Handler";
@@ -129,4 +129,4 @@ package body A0B.ARMv7M.SysTick is
       A0B.Timer.Internals.On_Tick;
    end SysTick_Handler;
 
-end A0B.ARMv7M.SysTick;
+end A0B.ARMv7M.SysTick_Clock_Timer;
