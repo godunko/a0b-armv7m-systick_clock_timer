@@ -4,8 +4,8 @@
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
-with A0B.ARMv7M.CMSIS;                use A0B.ARMv7M.CMSIS;
-with A0B.ARMv7M.System_Control_Block; use A0B.ARMv7M.System_Control_Block;
+with A0B.ARMv7M.Instructions;
+with A0B.ARMv7M.SCS.SCB;
 
 separate (A0B.Timer)
 package body Platform is
@@ -15,14 +15,14 @@ package body Platform is
    ----------------------------
 
    procedure Enter_Critical_Section
-     renames A0B.ARMv7M.CMSIS.Disable_Interrupts;
+     renames A0B.ARMv7M.Instructions.Disable_Interrupts;
 
    ----------------------------
    -- Leave_Critical_Section --
    ----------------------------
 
    procedure Leave_Critical_Section
-     renames A0B.ARMv7M.CMSIS.Enable_Interrupts;
+     renames A0B.ARMv7M.Instructions.Enable_Interrupts;
 
    ------------------
    -- Request_Tick --
@@ -33,9 +33,9 @@ package body Platform is
       --  Request SysTick exception. Do synchronization after modification of
       --  the register in the System Control Space to avoid side effects.
 
-      SCB.ICSR := (PENDSVSET => True, others => <>);
-      Data_Synchronization_Barrier;
-      Instruction_Synchronization_Barrier;
+      A0B.ARMv7M.SCS.SCB.ICSR := (PENDSVSET => True, others => <>);
+      A0B.ARMv7M.Instructions.Data_Synchronization_Barrier;
+      A0B.ARMv7M.Instructions.Instruction_Synchronization_Barrier;
    end Request_Tick;
 
    --------------
