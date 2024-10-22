@@ -18,3 +18,6 @@ disabled = true
 [[depends-on]]
 a0b_base = "*"
 a0b_armv7m = "*"
+
+[[forbids]]
+a0b_armv7m_systick_clock = "*"
